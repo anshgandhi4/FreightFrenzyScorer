@@ -416,7 +416,7 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
                 SizedBox(
-                    width: mobile ? 48.0 : 56.0,
+                    width: 54.0,
                     child: MaterialButton(
                         child: const Text('-1',
                             textAlign: TextAlign.center,
@@ -426,7 +426,7 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
                             )
                         ),
                         color: Colors.grey.shade800,
-                        elevation: mobile ? 2.0 : 8.0,
+                        elevation: mobile ? 4.0 : 8.0,
                         onPressed: () {
                             scorevar.setInt(scorevar.getInt() > 0 ? scorevar.getInt() - 1 : 0);
                             update();
@@ -434,13 +434,13 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
                                 setState(() {});
                             }
                         },
-                        padding: const EdgeInsets.all(12),
+                        padding: EdgeInsets.all(mobile ? 15.0 : 20.0),
                         shape: const CircleBorder(),
                     ),
                 ),
                 const SizedBox(width: 5.0),
                 SizedBox(
-                    width: mobile ? 48.0 : 56.0,
+                    width: 54.0,
                     child: MaterialButton(
                         child: const Text('+1',
                             textAlign: TextAlign.center,
@@ -450,7 +450,7 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
                             )
                         ),
                         color: Colors.grey.shade800,
-                        elevation: mobile ? 2.0 : 8.0,
+                        elevation: mobile ? 4.0 : 8.0,
                         onPressed: () {
                             scorevar.setInt(scorevar.getInt() + 1);
                             update();
@@ -458,7 +458,7 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
                                 setState(() {});
                             }
                         },
-                        padding: const EdgeInsets.all(12),
+                        padding: EdgeInsets.all(mobile ? 15.0 : 20.0),
                         shape: const CircleBorder(),
                     ),
                 ),
