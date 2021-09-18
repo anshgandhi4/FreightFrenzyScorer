@@ -38,14 +38,25 @@ int totalscore = 0;
 Num _a1 = Num();
 Num _a2 = Num();
 Num _a3 = Num();
+Num _a4 = Num();
+Num _a5 = Num();
+Num _a6 = Num();
+Num _a7 = Num();
+Num _a8 = Num();
+Num _a9 = Num();
 
 Num _t1 = Num();
 Num _t2 = Num();
 Num _t3 = Num();
+Num _t4 = Num();
+Num _t5 = Num();
 
 Num _eg1 = Num();
 Num _eg2 = Num();
 Num _eg3 = Num();
+Num _eg4 = Num();
+Num _eg5 = Num();
+Num _eg6 = Num();
 
 Num _p1 = Num();
 Num _p2 = Num();
@@ -82,7 +93,7 @@ void setA(int newA) {
 }
 
 void calcA() {
-    setA(10 * _a1.getInt() + 10 * _a2.getInt() + 10 * _a3.getInt());
+    setA(10 * _a1.getInt() + 3 * _a2.getInt() + 6 * _a3.getInt() + 5 * _a4.getInt() + 10 * _a5.getInt() + 2 * _a6.getInt() + 6 * _a7.getInt() + 10 * _a8.getInt() + 20 * _a9.getInt());
 }
 
 int getT() {
@@ -95,7 +106,7 @@ void setT(int newT) {
 }
 
 void calcT() {
-    setT(10 * _t1.getInt() + 10 * _t2.getInt() + 10 * _t3.getInt());
+    setT(_t1.getInt() + 2 * _t2.getInt() + 4 * _t3.getInt() + 6 * _t4.getInt() + 4 * _t5.getInt());
 }
 
 int getEG() {
@@ -108,7 +119,7 @@ void setEG(int newEG) {
 }
 
 void calcEG() {
-    setEG(10 * _eg1.getInt() + 10 * _eg2.getInt() + 10 * _eg3.getInt());
+    setEG(6 * _eg1.getInt() + 10 * _eg2.getInt() + 20 * _eg3.getInt() + 3 * _eg4.getInt() + 6 * _eg5.getInt() + 15 * _eg6.getInt());
 }
 
 int getP() {
@@ -164,7 +175,7 @@ class _HomeState extends State<Home> {
                             itemBuilder: (BuildContext context, int index) {
                                 return Container(
                                     child: modes[index],
-                                    margin: const EdgeInsets.fromLTRB(15.0, 0.0, 5.0, 0.0),
+                                    margin: const EdgeInsets.fromLTRB(15.0, 0.0, 15.0, 0.0),
                                 );
                             },
                             separatorBuilder: (BuildContext context, int index) => Card(
@@ -465,7 +476,7 @@ class _CustomButtonInputState extends State<CustomButtonInput> {
                 const SizedBox(width: 5.0),
                 Card(
                     color: Colors.grey.shade700,
-                    elevation: mobile ? 2.0 : 8.0,
+                    elevation: mobile ? 4.0 : 8.0,
                     child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
@@ -524,6 +535,12 @@ class Auto extends StatefulWidget {
         _a1.setInt(0);
         _a2.setInt(0);
         _a3.setInt(0);
+        _a4.setInt(0);
+        _a5.setInt(0);
+        _a6.setInt(0);
+        _a7.setInt(0);
+        _a8.setInt(0);
+        _a9.setInt(0);
         autoState.rebuild();
     }
 
@@ -535,13 +552,25 @@ class Auto extends StatefulWidget {
 class _AutoState extends State<Auto> {
     late CustomSlider a1;
     late CustomSlider a2;
-    late CustomButtonInput a3;
+    late CustomSlider a3;
+    late CustomSlider a4;
+    late CustomSlider a5;
+    late CustomButtonInput a6;
+    late CustomButtonInput a7;
+    late CustomSlider a8;
+    late CustomSlider a9;
 
     @override
     Widget build(BuildContext context) {
-        a1 = CustomSlider(scorevar: _a1, update: calcA, minvar: 0, maxvar: 2, parent: this);
-        a2 = CustomSlider(scorevar: _a2, update: calcA, minvar: 0, maxvar: 3, parent: this);
-        a3 = CustomButtonInput(scorevar: _a3, update: calcA, parent: this);
+        a1 = CustomSlider(scorevar: _a1, update: calcA, minvar: 0, maxvar: 1, parent: this);
+        a2 = CustomSlider(scorevar: _a2, update: calcA, minvar: 0, maxvar: 2, parent: this);
+        a3 = CustomSlider(scorevar: _a3, update: calcA, minvar: 0, maxvar: 2, parent: this);
+        a4 = CustomSlider(scorevar: _a4, update: calcA, minvar: 0, maxvar: 2, parent: this);
+        a5 = CustomSlider(scorevar: _a5, update: calcA, minvar: 0, maxvar: 2, parent: this);
+        a6 = CustomButtonInput(scorevar: _a6, update: calcA, parent: this);
+        a7 = CustomButtonInput(scorevar: _a7, update: calcA, parent: this);
+        a8 = CustomSlider(scorevar: _a8, update: calcA, minvar: 0, maxvar: 2, parent: this);
+        a9 = CustomSlider(scorevar: _a9, update: calcA, minvar: 0, maxvar: 2, parent: this);
 
         return Card(
             color: Colors.grey.shade900,
@@ -558,7 +587,7 @@ class _AutoState extends State<Auto> {
                             children: <Widget>[
                                 a1,
                                 const Text(
-                                    'Objective 1',
+                                    'Ducks Delivered',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18.0,
@@ -573,7 +602,7 @@ class _AutoState extends State<Auto> {
                             children: <Widget>[
                                 a2,
                                 const Text(
-                                    'Objective 2',
+                                    'Storage Park',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18.0,
@@ -588,11 +617,101 @@ class _AutoState extends State<Auto> {
                             children: <Widget>[
                                 a3,
                                 const Text(
-                                    'Objective 3',
+                                    'Full Storage Park',
                                     style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18.0,
                                   ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a4,
+                                const Text(
+                                    'Warehouse Park',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a5,
+                                const Text(
+                                    'Full Warehouse Park',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a6,
+                                const Text(
+                                    'Storage Unit Freights',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a7,
+                                const Text(
+                                    'Shipping Hub Freights',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a8,
+                                const Text(
+                                    'Duck Bonus',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
+                                ),
+                            ],
+                        ),
+                        const SizedBox(height: 5.0),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                                a9,
+                                const Text(
+                                    'Team Element Bonus',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 18.0,
+                                    ),
                                 ),
                             ],
                         ),
@@ -623,6 +742,8 @@ class Teleop extends StatefulWidget {
         _t1.setInt(0);
         _t2.setInt(0);
         _t3.setInt(0);
+        _t4.setInt(0);
+        _t5.setInt(0);
         teleopState.rebuild();
     }
 
@@ -635,12 +756,16 @@ class _TeleopState extends State<Teleop> {
     late CustomButtonInput t1;
     late CustomButtonInput t2;
     late CustomButtonInput t3;
+    late CustomButtonInput t4;
+    late CustomButtonInput t5;
 
     @override
     Widget build(BuildContext context) {
         t1 = CustomButtonInput(scorevar: _t1, update: calcT, parent: this);
         t2 = CustomButtonInput(scorevar: _t2, update: calcT, parent: this);
         t3 = CustomButtonInput(scorevar: _t3, update: calcT, parent: this);
+        t4 = CustomButtonInput(scorevar: _t4, update: calcT, parent: this);
+        t5 = CustomButtonInput(scorevar: _t5, update: calcT, parent: this);
 
         return Card(
             color: Colors.grey.shade900,
@@ -657,7 +782,7 @@ class _TeleopState extends State<Teleop> {
                           children: <Widget>[
                               t1,
                               const Text(
-                                  'Objective 4',
+                                  'Storage Unit Freights',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
@@ -672,7 +797,7 @@ class _TeleopState extends State<Teleop> {
                           children: <Widget>[
                               t2,
                               const Text(
-                                  'Objective 5',
+                                  'Level 1 Freights',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
@@ -687,7 +812,37 @@ class _TeleopState extends State<Teleop> {
                           children: <Widget>[
                               t3,
                               const Text(
-                                  'Objective 6',
+                                  'Level 2 Freights',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                  ),
+                              ),
+                          ],
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                              t4,
+                              const Text(
+                                  'Level 3 Freights',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                  ),
+                              ),
+                          ],
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                              t5,
+                              const Text(
+                                  'Shared Hub Freights',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
@@ -722,6 +877,9 @@ class EndGame extends StatefulWidget {
         _eg1.setInt(0);
         _eg2.setInt(0);
         _eg3.setInt(0);
+        _eg4.setInt(0);
+        _eg5.setInt(0);
+        _eg6.setInt(0);
         endGameState.rebuild();
     }
 
@@ -733,13 +891,19 @@ class EndGame extends StatefulWidget {
 class _EndGameState extends State<EndGame> {
     late CustomSlider eg1;
     late CustomSlider eg2;
-    late CustomButtonInput eg3;
+    late CustomSlider eg3;
+    late CustomSlider eg4;
+    late CustomSlider eg5;
+    late CustomSlider eg6;
 
     @override
     Widget build(BuildContext context) {
-        eg1 = CustomSlider(scorevar: _eg1, update: calcEG, minvar: 0, maxvar: 3, parent: this);
-        eg2 = CustomSlider(scorevar: _eg2, update: calcEG, minvar: 0, maxvar: 2, parent: this);
-        eg3 = CustomButtonInput(scorevar: _eg2, update: calcEG, parent: this);
+        eg1 = CustomSlider(scorevar: _eg1, update: calcEG, minvar: 0, maxvar: 12, parent: this);
+        eg2 = CustomSlider(scorevar: _eg2, update: calcEG, minvar: 0, maxvar: 1, parent: this);
+        eg3 = CustomSlider(scorevar: _eg3, update: calcEG, minvar: 0, maxvar: 1, parent: this);
+        eg4 = CustomSlider(scorevar: _eg4, update: calcEG, minvar: 0, maxvar: 2, parent: this);
+        eg5 = CustomSlider(scorevar: _eg5, update: calcEG, minvar: 0, maxvar: 2, parent: this);
+        eg6 = CustomSlider(scorevar: _eg6, update: calcEG, minvar: 0, maxvar: 2, parent: this);
 
         return Card(
             color: Colors.grey.shade900,
@@ -755,7 +919,7 @@ class _EndGameState extends State<EndGame> {
                           children: <Widget>[
                               eg1,
                               const Text(
-                                  'Objective 7',
+                                  'Ducks Delivered',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
@@ -770,7 +934,7 @@ class _EndGameState extends State<EndGame> {
                           children: <Widget>[
                               eg2,
                               const Text(
-                                  'Objective 8',
+                                  'Alliance Hub Balance',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
@@ -785,7 +949,52 @@ class _EndGameState extends State<EndGame> {
                           children: <Widget>[
                               eg3,
                               const Text(
-                                  'Objective 9',
+                                  'Shared Hub Tip',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                  ),
+                              ),
+                          ],
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                              eg4,
+                              const Text(
+                                  'Warehouse Park',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                  ),
+                              ),
+                          ],
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                              eg5,
+                              const Text(
+                                  'Full Warehouse Park',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18.0,
+                                  ),
+                              ),
+                          ],
+                      ),
+                      const SizedBox(height: 5.0),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                              eg6,
+                              const Text(
+                                  'Shipping Hub Caps',
                                   style: TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
